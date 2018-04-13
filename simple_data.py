@@ -23,8 +23,8 @@ def smooth(x,y,window_len):
 grid = []
 # Visualisation des données :
 for discussion in corpus:
-    sA = smooth(discussion["A"][:,2], discussion["A"][:,1],12)
-    sB = smooth(discussion["B"][:,2], discussion["B"][:,1],12)
+    sA = smooth(discussion["A"][:,2], discussion["A"][:,1],int(discussion["A"][-1,2]/20))
+    sB = smooth(discussion["B"][:,2], discussion["B"][:,1],int(discussion["B"][-1,2]/20))
         
     plot = figure(width=800, height=250, y_range=[0,3.5], title="Speech rate")
     plot.line(discussion["A"][:,2], discussion["A"][:,1], legend="Speaker A",
@@ -35,6 +35,7 @@ for discussion in corpus:
                 line_width=1, color="red", alpha=0.5, line_dash="10 4")
     plot.line(sB['x'], sB['y'], legend="Smooth Speaker B",
                 line_width=2, color="red")
+    plot.legend.click_policy="hide"
     grid.append(plot)
     
 show(gridplot(grid, ncols=1))
