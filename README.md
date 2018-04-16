@@ -1,10 +1,11 @@
 # Avancée actuelle
 
-#### Visualisation de l'évolution du débit de parole au long de conversations d'un corpus simple fournit par Simone Fuscone.
+#### Visualisation du débit de parole (speech rate) dans un corpus simple fournit par Simone Fuscone.
+Deux fonctions principales permettent cette visualisation :
+* ***display_conversation()*** affiche l'évolution du débit de paroles des conversations passées en paramètres (si aucun paramètre, toutes les conversations sont traitées). Voici un exemple de son utilisation:
+![Capture 1](https://raw.githubusercontent.com/Antonin-Gaboriau/lpl-data-visualization-api/master/Captures/capture1.PNG)
 
-La fonction *display_speech_rate* affiche la visualisation de la ou des conversations indiquées en paramètre. Sans paramètre la fonction affiche la visualisation de toutes les conversations du corpus. Les fichiers csv contenants les données doivent être titrés et formatés au bon format (tel que Simone Fuscone me l'a énoncé pour ce premier corpus simple) et placés dans le répertoire *data*. Il est possible de faire disparaitre ou apparaitre les courbes affiché en cliquant sur leurs légendes.
+* ***display_average()*** affiche la courbe moyenne du débit de paroles du corpus (les données sont synchronisées en pourcentage de la conversation). Deux filtres sont disponibles en paramètre pour sélectionner les données à traiter: une liste de conversation *conv* et une liste de locuteurs *speakers*. Voici un exemple de son utilisation:
+![Capture 2](https://raw.githubusercontent.com/Antonin-Gaboriau/lpl-data-visualization-api/master/Captures/capture2.PNG)
 
-Le code est visible dans le fichier ![simple_data.py](https://github.com/Antonin-Gaboriau/lpl-data-visualization-api/blob/master/simple_data.py) et voici un apperçu de son éxecution :
-![Capture 1](https://raw.githubusercontent.com/Antonin-Gaboriau/lpl-data-visualization-api/master/Captures/capture2.PNG?token=AbRYaHMpapCXMerHwuhqm6u9NFdaFEBiks5a2gmrwA%3D%3D)
-![Capture 2](https://raw.githubusercontent.com/Antonin-Gaboriau/lpl-data-visualization-api/master/Captures/capture1.PNG?token=AbRYaMKWNdmdmUdrS_ZPUNW2A0i4QiwOks5a2LIXwA%3D%3D)
-
+Le code est visible dans le fichier ![simple_data.py](https://github.com/Antonin-Gaboriau/lpl-data-visualization-api/blob/master/simple_data.py)
