@@ -1,0 +1,32 @@
+class VisualizationData:
+    def __init__(self, directory, corpus=[], conversations=[], speakers=[], data_type=[]):
+        metadata = read_metadata()
+        self.data = []
+        for file_name in listdir("data"):
+            file_info = file_name.replace(".csv", "").split("_")
+            if file_info[1] != "metadata":
+                id_caller = find_info(metadata, file_info[1], file_info[-1])[3]
+                if ((len(corpus) == 0 or int(file_info[0]) in corpus)
+                and (len(conversations) == 0 or int(file_info[1]) in conversations)
+                and (len(speakers) == 0 or id_caller in speakers)
+                and (len(data_type) == 0 or file_info[2] in data_type)):
+                    to_add = {"corpus":file_info[0], "conv":file_info[1], "speaker":file_info[-1]}
+                    to_add[file_info[2]] =  loadtxt(open("data/"+file_name, "rb"), delimiter="\t", skiprows=1)
+                    self.data.append(to_add)
+    
+    def read_metadata():
+        for file_name in listdir("data"):
+            file_info = file_name.replace(".csv", "").split("_")
+            if (file_info[1] == "metadata"):
+                data_format = {'names': ("id", "id_conv","id_caller","id_speaker","id_topic",
+                                         "sex","age","geography","level_study"),
+                               'formats': ('i', 'i', 'U64', 'i', 'U64', 'U64', 'i', 'U64', 'i')}
+            return loadtxt(open("data/"+file_name, "rb"), delimiter="\t", skiprows=1, dtype=data_format)    
+        
+    def find_info(metadata, conv, caller):
+        for line in metadata:
+            if line["id_conv"] == int(conv) and line["id_caller"] == caller:
+                return line
+
+data = VisualizationData("data")
+print(data.data)
