@@ -11,7 +11,7 @@ data2 = VisualizationData("data_directory", conversation=[2001,2002,2003], speak
 
 *corpus* et *data_type* sont aussi des filtres disponibles.
 
-* **Fonctions d'affichage de la classe *Display* ** 
+* **Fonctions d'affichage de la classe *Display*** 
   * ***Display.conversation*** affiche l'évolution du débit de parole des conversations composées des données selectionnées par l'objet *VisualizationData* passé en paramètre à coté de l'optionnel paramètre binaire *linked* qui à *True* synchronise l'affichage de chaque conversations, c'est à dire que l'on se déplace et selectionnent dans tous les graphiques à la fois. Par exemple le zoom appliqué sur une conversation est immédiatement répercuté sur les autres pour que la plages des abscisses et ordonnés restent les même.
   * ***Display.average*** affiche la courbe moyenne du débit de parole des données de l'objet *VisualizationData* passé en paramètre.
   * Dans les deux fonctions, cliquer sur la légende fait aparaitre/disparaitre les courbes. La finesse du lissage (*smoothing_window*) et le nombre de points de la courbe (*points_number*) sont modifiables en paramètres optionnels.
